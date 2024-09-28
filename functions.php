@@ -76,7 +76,7 @@ function tambah_guru($data)
 {
 	global $con;
 	$nama_alternatif = $data['nama'];
-	mysqli_query($con, "INSERT INTO alternatif (nama) VALUES ('$nama_alternatif')");
+	mysqli_query($con, "INSERT INTO alternatif (nama,username) VALUES ('$nama_alternatif','admin')");
 
 	return mysqli_affected_rows($con);
 }
@@ -118,8 +118,7 @@ function edit_data_guru($data)
 		if ($i == 1) {
 			$c1_sum = $data['c1_sum'];
 			mysqli_query($con, "UPDATE nilai SET nilai = '$c1_sum' WHERE id_alternatif = '$id_alternatif' AND id_kriteria = '$i'");
-		}
-		elseif ($i == 3) {
+		} elseif ($i == 3) {
 			$c3_sum = $data['c3_sum'];
 			mysqli_query($con, "UPDATE nilai SET nilai = '$c3_sum' WHERE id_alternatif = '$id_alternatif' AND id_kriteria = '$i'");
 		}
@@ -167,7 +166,7 @@ function insert_hasil_perankingan($data)
 
 
 	for ($i = 0; $i < count($id_alternatif); $i++) {
-		mysqli_query($con, "INSERT INTO hasil_akhir (id_laporan, id_alternatif, total) VALUES('$id_laporan','$id_alternatif[$i]','$total_hasil[$i]')");
+		mysqli_query($con, "INSERT INTO hasil_akhir (id_laporan, id_alternatif, total,username) VALUES('$id_laporan','$id_alternatif[$i]','$total_hasil[$i]','admin')");
 	}
 
 	return mysqli_affected_rows($con);
@@ -239,7 +238,7 @@ function tambah_nilai($data)
 		}
 
 		// Insert nilai ke tabel nilai berdasarkan id_alternatif dan id_kriteria
-		mysqli_query($con, "INSERT INTO nilai (id_alternatif, id_kriteria, nilai) VALUES ('$id_alternatif','$i','$c')");
+		mysqli_query($con, "INSERT INTO nilai (id_alternatif, id_kriteria, nilai,username) VALUES ('$id_alternatif','$i','$c','admin')");
 	}
 	return mysqli_affected_rows($con);
 }
@@ -288,7 +287,7 @@ function add_laporan()
 {
 	global $con;
 	$tanggal = date('d - M - Y | H : i : s');
-	mysqli_query($con, "INSERT INTO laporan_hasil (tanggal) VALUES ('$tanggal')");
+	mysqli_query($con, "INSERT INTO laporan_hasil (tanggal,username) VALUES ('$tanggal','admin')");
 	return mysqli_affected_rows($con);
 }
 function get_laporan_terakhir()
