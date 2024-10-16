@@ -200,12 +200,36 @@ function insert_hasil_perankingan($data)
 
 function hapus_laporan($kode)
 {
-	global $con;
+    global $con;
 
-	mysqli_query($con, "DELETE FROM hasil_akhir WHERE id_laporan = '$kode' ");
-	mysqli_query($con, "DELETE FROM laporan_hasil WHERE id_laporan = '$kode' ");
+    // Validasi $kode (misalnya, pastikan $kode adalah integer)
+    if (!is_numeric($kode)) {
+        return false; // Atau throw exception
+    }
 
-	return mysqli_affected_rows($con);
+    // Escape $kode untuk mencegah SQL Injection
+    $kode = mysqli_real_escape_string($con, $kode);
+
+    // Hapus data dari tabel hasil_akhir
+    $query1 = "DELETE FROM hasil_akhir WHERE id_laporan = '$kode'";
+    $result1 = mysqli_query($con, $query1);
+    if (!$result1) {
+        // Tangani error query pertama (misalnya, log error atau tampilkan pesan error)
+        error_log("Error query pertama: " . mysqli_error($con)); 
+        return false;
+    }
+
+    // Hapus data dari tabel laporan_hasil
+    $query2 = "DELETE FROM laporan_hasil WHERE id_laporan = '$kode'";
+    $result2 = mysqli_query($con, $query2);
+    if (!$result2) {
+        // Tangani error query kedua
+        error_log("Error query kedua: " . mysqli_error($con)); 
+        return false;
+    }
+
+    // Jika kedua query berhasil, return true
+    return true;
 }
 
 function edit_account($data)
