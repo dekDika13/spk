@@ -140,17 +140,42 @@ function edit_data_guru($data)
 
 function hapus_guru($id_alternatif)
 {
-	global $con;
+    global $con;
 
-	mysqli_query($con, "DELETE FROM nilai WHERE id_alternatif = '$id_alternatif' ");
-	mysqli_query($con, "DELETE FROM hasil_akhir WHERE id_alternatif = '$id_alternatif' ");
-	mysqli_query($con, "DELETE FROM alternatif WHERE id_alternatif = '$id_alternatif' ");
+    // Validasi $id_alternatif (misalnya, pastikan $id_alternatif adalah integer)
+    if (!is_numeric($id_alternatif)) {
+        return false; // Atau throw exception
+    }
 
-	return mysqli_affected_rows($con);
-	// for ($i = 1; $i <= 5; $i++) {
-	// 	mysqli_query($con, "UPDATE nilai SET nilai = '0' WHERE id_alternatif = '$id_alternatif' AND id_kriteria = '$i'");
-	// }
-	// return mysqli_affected_rows($con);
+    // Escape $id_alternatif untuk mencegah SQL Injection
+    $id_alternatif = mysqli_real_escape_string($con, $id_alternatif);
+
+    // Hapus data dari tabel nilai
+    $query1 = "DELETE FROM nilai WHERE id_alternatif = '$id_alternatif'";
+    $result1 = mysqli_query($con, $query1);
+    if (!$result1) {
+        error_log("Error query pertama: " . mysqli_error($con));
+        return false;
+    }
+
+    // Hapus data dari tabel hasil_akhir
+    $query2 = "DELETE FROM hasil_akhir WHERE id_alternatif = '$id_alternatif'";
+    $result2 = mysqli_query($con, $query2);
+    if (!$result2) {
+        error_log("Error query kedua: " . mysqli_error($con));
+        return false;
+    }
+
+    // Hapus data dari tabel alternatif
+    $query3 = "DELETE FROM alternatif WHERE id_alternatif = '$id_alternatif'";
+    $result3 = mysqli_query($con, $query3);
+    if (!$result3) {
+        error_log("Error query ketiga: " . mysqli_error($con));
+        return false;
+    }
+
+    // Jika semua query berhasil, return true
+    return true;
 }
 
 function insert_hasil_perankingan($data)
