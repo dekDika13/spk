@@ -60,40 +60,38 @@ if (!isset($_POST['id_alternatif'])) {
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <style>
-    body {
-        background-color: #f0f0f0;
-    }
+        <style>
+        body {
+            background-color: #f0f0f0;
+        }
 
+        .container {
+            min-height: calc(100vh - 211px - -60px);
+        }
 
-    .container {
-        min-height: calc(100vh - 211px - -60px);
-    }
+        .hidden {
+            display: none;
+        }
 
-    .col-md-12 {
-        padding: 8px;
-    }
+        .col-md-12 {
+            padding: 8px;
+        }
 
-    .copyright {
-        text-align: center;
-        color: #CDD0D4;
+        .copyright {
+            text-align: center;
+            color: #CDD0D4;
+        }
 
-    }
+        .navbar-nav a:hover {
+            font-weight: bold;
+            color: darkblue;
+        }
 
-    a font {
-        color: whitesmoke;
-    }
-
-    .navbar-nav a:hover {
-        font-weight: bold;
-        color: darkblue;
-    }
-
-    tr:hover {
-        -webkit-transform: scale(1.03);
-        transform: scale(1.03);
-        font-weight: bold;
-    }
+        tr:hover {
+            -webkit-transform: scale(1.03);
+            transform: scale(1.03);
+            font-weight: bold;
+        }
     </style>
 
     <title>PERHITUNGAN</title>
@@ -104,13 +102,13 @@ if (!isset($_POST['id_alternatif'])) {
 
 
     <br>
-    <div class="container bg-light shadow p-3 mb-5">
+    <div  class="container bg-light shadow mb-5" >
 
-        <div class="alert alert-info">
+        <div cid="content"class="alert alert-info content hidden">
             <center><b>DATA GURU TERPILIH</b></center>
         </div>
 
-        <div class="table-responsive p-4">
+        <div id="content"class="table-responsive p-4 content hidden">
             <table class="table table-striped shadow">
                 <tr class="bg-info">
                     <th width="150">Id Alternatif</th>
@@ -153,15 +151,15 @@ if (!isset($_POST['id_alternatif'])) {
         </div>
 
 
-        <br><br>
-        <h1 style="border-bottom:3px dodgerblue solid"></h1>
-        <br><br>
+        <br id="content"  class="content hidden"><br>
+        <h1 id="content"  style="border-bottom:3px dodgerblue solid " class="content hidden"></h1>
+        <br id="content"  class="content hidden"><br>
 
-        <div class="alert alert-info">
+        <div id="content"class="alert alert-info content hidden">
             <center><b>NORMALISASI</b></center>
         </div>
 
-        <div class="table-responsive p-4">
+        <div id="content" class="table-responsive p-4 content hidden" >
             <table class="table table-striped shadow">
                 <tr class="bg-info">
                     <th width="150">Id Alternatif</th>
@@ -219,11 +217,11 @@ if (!isset($_POST['id_alternatif'])) {
             </table>
 
         </div>
-        <div class="card mt-4">
-            <div class="card-header bg-info text-white">
+        <div id="content"class="card mt-4 content hidden">
+            <div id="content "class="card-header bg-info text-white content hidden">
                 Keterangan
             </div>
-            <div class="card-body">
+            <div id="content"class="card-body content hidden">
                 <h5 class="card-title">Normalisasi</h5>
                 <p class="card-text">
                     <!-- Tambahkan keterangan terkait hasil perhitungan di sini -->
@@ -237,15 +235,15 @@ if (!isset($_POST['id_alternatif'])) {
 
 
 
-        <br><br>
-        <h1 style="border-bottom:3px dodgerblue solid"></h1>
-        <br><br>
+        <br id="content"  class="content hidden"><br>
+        <h1 id="content"  style="border-bottom:3px dodgerblue solid " class="content hidden"></h1>
+        <br id="content"  class="content hidden"><br>
 
-        <div class="alert alert-info">
+        <div id="content"class="alert alert-info content hidden">
             <center><b>TERBOBOT</b></center>
         </div>
 
-        <div class="table-responsive p-4">
+        <div id="content"class="table-responsive p-4 content hidden">
             <table class="table table-striped shadow">
                 <tr class="bg-info">
                     <th width="150">Id Alternatif</th>
@@ -285,11 +283,11 @@ if (!isset($_POST['id_alternatif'])) {
 
             </table>
         </div>
-        <div class="card mt-4">
+        <div id="content" class="card mt-4 content hidden">
             <div class="card-header bg-info text-white">
                 Keterangan
             </div>
-            <div class="card-body">
+            <div  id="content" class="card-body content hidden">
                 <h5 class="card-title">Terbobot</h5>
                 <p class="card-text">
                     <!-- Tambahkan keterangan terkait hasil perhitungan di sini -->
@@ -303,9 +301,9 @@ if (!isset($_POST['id_alternatif'])) {
 
 
 
-        <br><br>
-        <h1 style="border-bottom:3px dodgerblue solid"></h1>
-        <br><br>
+        <br id="content"  class="content hidden"><br>
+        <h1 id="content" style="border-bottom:3px dodgerblue solid" class="content hidden"></h1>
+        <br id="content"  class="content hidden"><br>
 
         <?php
       if (isset($_POST['simpan'])) {
@@ -326,8 +324,7 @@ if (!isset($_POST['id_alternatif'])) {
         echo '<div class="alert alert-success">Data berhasil disimpan!</div>';
       }
       ?>
-
-        <div class="alert alert-info">
+       <div class="alert alert-info">
             <center><b>HASIL AKHIR</b></center>
         </div>
 
@@ -400,12 +397,14 @@ if (!isset($_POST['id_alternatif'])) {
             </table>
         </div>
 
-        <form method="POST" class="form-group">
+     <!-- Tombol Simpan dan Show/Hide -->
+     <form method="POST" class="form-group">
             <?php foreach ($hasil_akhir as $hasil) { ?>
             <input type="hidden" name="id_alternatif[]" value="<?= $hasil['id_alternatif']; ?>">
             <input type="hidden" name="total_hasil[]" value="<?= $hasil['total']; ?>">
             <?php } ?>
             <button type="submit" name="simpan" class="btn btn-success" style="float: right;">Simpan</button>
+            <button type="button" id="toggleButton" class="btn btn-primary" style="float: right; margin-right: 10px;">Show</button>
             <br><br>
         </form>
 
@@ -427,20 +426,34 @@ if (!isset($_POST['id_alternatif'])) {
                 <h6>MI AL HUDA</h6>
             </div>
         </div>
-        <?php   } ?>
-        <!-- 
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-       -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-            integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-            integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
-        </script>
+        <?php } ?>
+
+
+        <script>
+       const toggleButton = document.getElementById('toggleButton');
+const contentElements = document.querySelectorAll('.content'); // Pilih semua elemen dengan class "content"
+
+toggleButton.addEventListener('click', function() {
+  contentElements.forEach(element => {  // Loop melalui setiap elemen
+    element.classList.toggle('hidden'); // Toggle class "hidden"
+  });
+
+  // Ubah teks tombol berdasarkan status elemen pertama
+  if (contentElements[0].classList.contains('hidden')) { 
+    toggleButton.textContent = 'Show All';
+  } else {
+    toggleButton.textContent = 'Hide All';
+  }
+});
+    </script>
+ 
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous">
+    </script>
 
 </body>
 
